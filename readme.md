@@ -1,19 +1,52 @@
 # C++ Boilerplate
-[![Build Status](https://travis-ci.org/dpiet/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/dpiet/cpp-boilerplate)
-[![Coverage Status](https://coveralls.io/repos/github/dpiet/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/dpiet/cpp-boilerplate?branch=master)
+[![Build Status](https://travis-ci.org/CP-TSAI/ENPM808X-Midterm-Project.svg?branch=master)](https://travis-ci.org/CP-TSAI/ENPM808X-Midterm-Project)
+[![Coverage Status](https://coveralls.io/repos/github/CP-TSAI/ENPM808X-Midterm-Project/badge.svg?branch=master)](https://coveralls.io/github/CP-TSAI/ENPM808X-Midterm-Project?branch=master)
 ---
 
 ## Overview
 
-Simple starter C++ project with:
+Perception is the key to intelligent behavior in Robotics, and situational awareness is crucial for safe operation in the real and dynamic environments. Our team propose a project to implement the perception module in Acme robotic system. Our design utilizes techniques of Harr cascade, HOG feature and SVM classifier for human detection upon images.
 
-- cmake
-- googletest
+Haar cascade is a method which uses a cascade function to train from positive and negative images, and use the function to detect objects with similar features. Histograms of Oriented Gradients (HOG) is a feature which calculates frequency of gradient orientation in local part of an image. It allows the same object to produce similar feature descriptor whenviewed under different conditions. The Support Vector Machine (SVM) represents inputs as points in a mapped space and calculate largest decision boundary for each category. The SVM model takes features from Harr cascade and HOG feature, and creates a classifier to classify image objects.
+
+After the processing input image with the above HOG detection algorithm, the program displays bounding boxes of detected humans, and prints the position of each bounding box. The printed bounding box positon resembles the coordinates between the humans and the robot. The software is implemented with C++ on Ubuntu 16.04. Libraries such as OpenCV are applied to enhance image processing.
+
+## Statement of Work
+- Create detection module and declare classes, class variables and class methods
+- Design unit tests for the module and each method
+- Implement methods to handle input image dataset and down sample images
+- Implement human detection algorithm using OpenCV library
+- Implement methods to calculate object location in robot reference and display human position and their sizes
+- Verify unit testing
+- Create comments using Doxygen style
+
+## Licence
+- Mit Licence
+```
+Copyright <2018> <Chin-Po Tsai> <Chien-Te Lee>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
+```
 
 ## Standard install via command-line
+- clone from repository
+- create build folder
+- build program
 ```
-git clone --recursive https://github.com/dpiet/cpp-boilerplate
-cd <path to repository>
+git clone --recursive https://github.com/CP-TSAT/ENPM808X_Midterm
+cd <repository>
 mkdir build
 cd build
 cmake ..
@@ -22,105 +55,9 @@ Run tests: ./test/cpp-test
 Run program: ./app/shell-app
 ```
 
-## Building for code coverage (for assignments beginning in Week 4)
-```
-sudo apt-get install lcov
-cmake -D COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug ../
-make
-make code_coverage
-```
-This generates a index.html page in the build/coverage sub-directory that can be viewed locally in a web browser.
-
-## Working with Eclipse IDE ##
-
-## Installation
-
-In your Eclipse workspace directory (or create a new one), checkout the repo (and submodules)
-```
-mkdir -p ~/workspace
-cd ~/workspace
-git clone --recursive https://github.com/dpiet/cpp-boilerplate
-```
-
-In your work directory, use cmake to create an Eclipse project for an [out-of-source build] of cpp-boilerplate
-
-```
-cd ~/workspace
-mkdir -p boilerplate-eclipse
-cd boilerplate-eclipse
-cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLIPSE_VERSION=4.7.0 -D CMAKE_CXX_COMPILER_ARG1=-std=c++14 ../cpp-boilerplate/
-```
-
-## Import
-
-Open Eclipse, go to File -> Import -> General -> Existing Projects into Workspace -> 
-Select "boilerplate-eclipse" directory created previously as root directory -> Finish
-
-# Edit
-
-Source files may be edited under the "[Source Directory]" label in the Project Explorer.
+## Pair Programming and SIP Process
+The product backlog, iteration backlog, and worklog googlesheet is at: [Product Backlog](https://docs.google.com/spreadsheets/d/1iUGy3wYF-gTKpujZMg4uWaInznVW3jiqRCExSMgYiPU/edit?usp=sharing)
 
 
-## Build
-
-To build the project, in Eclipse, unfold boilerplate-eclipse project in Project Explorer,
-unfold Build Targets, double click on "all" to build all projects.
-
-## Run
-
-1. In Eclipse, right click on the boilerplate-eclipse in Project Explorer,
-select Run As -> Local C/C++ Application
-
-2. Choose the binaries to run (e.g. shell-app, cpp-test for unit testing)
 
 
-## Debug
-
-
-1. Set breakpoint in source file (i.e. double click in the left margin on the line you want 
-the program to break).
-
-2. In Eclipse, right click on the boilerplate-eclipse in Project Explorer, select Debug As -> 
-Local C/C++ Application, choose the binaries to run (e.g. shell-app).
-
-3. If prompt to "Confirm Perspective Switch", select yes.
-
-4. Program will break at the breakpoint you set.
-
-5. Press Step Into (F5), Step Over (F6), Step Return (F7) to step/debug your program.
-
-6. Right click on the variable in editor to add watch expression to watch the variable in 
-debugger window.
-
-7. Press Terminate icon to terminate debugging and press C/C++ icon to switch back to C/C++ 
-perspetive view (or Windows->Perspective->Open Perspective->C/C++).
-
-
-## Plugins
-
-- CppChEclipse
-
-    To install and run cppcheck in Eclipse
-
-    1. In Eclipse, go to Window -> Preferences -> C/C++ -> cppcheclipse.
-    Set cppcheck binary path to "/usr/bin/cppcheck".
-
-    2. To run CPPCheck on a project, right click on the project name in the Project Explorer 
-    and choose cppcheck -> Run cppcheck.
-
-
-- Google C++ Sytle
-
-    To include and use Google C++ Style formatter in Eclipse
-
-    1. In Eclipse, go to Window -> Preferences -> C/C++ -> Code Style -> Formatter. 
-    Import [eclipse-cpp-google-style][reference-id-for-eclipse-cpp-google-style] and apply.
-
-    2. To use Google C++ style formatter, right click on the source code or folder in 
-    Project Explorer and choose Source -> Format
-
-[reference-id-for-eclipse-cpp-google-style]: https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-cpp-google-style.xml
-
-- Git
-
-    It is possible to manage version control through Eclipse and the git plugin, but it typically requires creating another project. If you're interested in this, try it out yourself and contact me on Canvas.
