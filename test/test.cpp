@@ -42,3 +42,18 @@ TEST(perceptionTest, testPerceptiomMember){
 	EXPECT_EQ(test, substr);
 }
 
+
+// inputHandle
+TEST(inputHandleTest, testInputHandleReadImage){
+	perception perceptionObject1;
+	perceptionObject1.image = perceptionObject1.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
+	EXPECT_EQ(int(perceptionObject1.inputHandleObject.isReadSuccessful), 1);
+
+	// give a non-existent image
+	perception perceptionObject2;
+	perceptionObject2.image = perceptionObject2.inputHandleObject.readImage("../imageData/Testcase/person_06d2.bmp");
+	EXPECT_NE(int(perceptionObject2.inputHandleObject.isReadSuccessful), 1);
+}
+
+
+

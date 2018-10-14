@@ -4,6 +4,11 @@ add_executable(
     cpp-test
     main.cpp
     test.cpp
+    ../app/perception.cpp
+    ../app/inputHandle.cpp
+    ../app/imageProcess.cpp
+    ../app/hogHumanDetect.cpp
+    ../app/outputDisplay.cpp
 )
 
 target_include_directories(cpp-test PUBLIC ../vendor/googletest/googletest/include 
