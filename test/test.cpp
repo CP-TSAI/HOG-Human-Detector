@@ -1,6 +1,7 @@
 
 #include <gtest/gtest.h>
 #include <string>
+#include <vector>
 #include "perception.h"
 #include "inputHandle.h"
 #include "imageProcess.h"
@@ -107,7 +108,6 @@ TEST(imageProcessTest, testImageProcessLowPassFilter){
 
 
 // test hogHumanDetect
-
 TEST(hogHumanDetectTest, testHogHumanDetectMember){
 	perception perceptionObject;
 
@@ -119,6 +119,29 @@ TEST(hogHumanDetectTest, testHogHumanDetectMember){
 	EXPECT_EQ(test, substr);
 }
 
+
+// outputDisplay
+TEST(outputDisplayTest, testMarkHuman){
+	perception perceptionObject;
+	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
+
+	cv::HOGDescriptor hog;
+	hog.setSVMDetector(cv::HOGDescriptor::getDefaultPeopleDetector());
+
+
+	std::vector<cv::Rect> found, found_filtered;
+	hog.detectMultiScale(perceptionObject.image, found, 0, cv::Size(8, 8), cv::Size(32, 32), 1.05, 2);
+	std::size_t i, j;
+	for (i = 0; i < found.size(); i++) {
+		cv::Rect r = found[i];
+		for (j = 0; j < found.size(); j++)
+			if (j != i && (r & found[j]) == r)
+				break;
+		if (j == found.size())
+			found_filtered.push_back(r);
+	}
+	EXPECT_GT(int(found_filtered.size()), 0);
+}
 
 
 
