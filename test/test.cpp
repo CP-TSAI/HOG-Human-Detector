@@ -43,7 +43,7 @@ TEST(perceptionTest, testPerceptiomMember){
 }
 
 
-// inputHandle
+// test inputHandle
 TEST(inputHandleTest, testInputHandleReadImage){
 	perception perceptionObject1;
 	perceptionObject1.image = perceptionObject1.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
@@ -56,7 +56,7 @@ TEST(inputHandleTest, testInputHandleReadImage){
 }
 
 
-// imageProcess
+// test imageProcess
 TEST(imageProcessTest, testImageProcessResizeImage){
 	perception perceptionObject;
 	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_082.bmp");
@@ -103,5 +103,22 @@ TEST(imageProcessTest, testImageProcessLowPassFilter){
 	} 
 	EXPECT_EQ(counter, 0);
 }
+
+
+
+// test hogHumanDetect
+
+TEST(hogHumanDetectTest, testHogHumanDetectMember){
+	perception perceptionObject;
+
+	std::string name =  typeid(perceptionObject.hogHumanDetectObject.hog).name();
+	std::string test = "HOGDescriptor";
+	std::size_t pos = name.find(test);  
+	std::string substr = name.substr(pos, test.size());
+
+	EXPECT_EQ(test, substr);
+}
+
+
 
 
