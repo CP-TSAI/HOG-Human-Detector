@@ -56,4 +56,52 @@ TEST(inputHandleTest, testInputHandleReadImage){
 }
 
 
+// imageProcess
+TEST(imageProcessTest, testImageProcessResizeImage){
+	perception perceptionObject;
+	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_082.bmp");
+	cv::Mat imageResized = perceptionObject.imageProcessObject.resizeImage(perceptionObject.image);
+	EXPECT_EQ(imageResized.rows, 480);
+	EXPECT_EQ(imageResized.cols, 640);
+}
+
+TEST(imageProcessTest, testImageProcessToGray){
+	perception perceptionObject;
+
+	// give a color image
+	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_082.bmp");
+	EXPECT_EQ(perceptionObject.image.channels(), 3);
+
+	cv::Mat imageGray = perceptionObject.imageProcessObject.toGray(perceptionObject.image);
+	EXPECT_EQ(imageGray.channels(), 1);
+}
+
+
+TEST(imageProcessTest, testImageProcessLowPassFilter){
+	perception perceptionObject;
+	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
+	
+	cv::Mat imageLowPass1 = perceptionObject.imageProcessObject.lowPassFilter(perceptionObject.image);
+
+	cv::Mat imageLowPass2 = perceptionObject.image;
+	blur(imageLowPass2, imageLowPass2, cv::Size(3, 3));
+
+
+	// Get a matrix with non-zero values at points where the 
+	// two matrices have different values
+	// Equal if no elements disagree
+	cv::Mat diff = imageLowPass1 != imageLowPass2;
+
+	// access the element of diff matrix, if it's all zero,
+	// then it means the images are the same
+	int counter = 0;
+	for(size_t nrow = 0; nrow < (size_t) diff.rows; nrow++) {  
+	   for(size_t ncol = 0; ncol < (size_t) diff.cols; ncol++) {  
+	       cv::Vec3b bgr = diff.at<cv::Vec3b>(nrow,ncol);
+	       counter = counter + (bgr.val[0] + bgr.val[1] + bgr.val[2]);
+	   }  
+	} 
+	EXPECT_EQ(counter, 0);
+}
+
 
