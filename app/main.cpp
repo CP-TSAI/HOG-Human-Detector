@@ -1,8 +1,7 @@
 #include <iostream>
-#include <lib.hpp>
 
 int main()
 {
-    dummy();
+    std::cout << "hello world" << std::endl;
     return 0;
 }
