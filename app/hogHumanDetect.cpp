@@ -1,6 +1,5 @@
-
 #include "hogHumanDetect.h"
 
-// ------ hogHumanDetect
-void hogHumanDetect::setHogSVM(cv::HOGDescriptor& hog){
+void hogHumanDetect::setHogSVM(HOGDescriptor& hog){
+	hog.setSVMDetector(HOGDescriptor::getDefaultPeopleDetector());
 }
