@@ -13,7 +13,7 @@ private:
 
 public:
 	cv::HOGDescriptor hog;
-	cv::HOGDescriptor& setHogSVM(cv::HOGDescriptor& hog);
+	void setHogSVM(cv::HOGDescriptor& hog);
 };
 
 #endif    // INCLUDE_HOGHUMANDETECT_H_

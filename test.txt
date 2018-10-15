@@ -1,0 +1,12 @@
+imageName: test.bmp
+height: 133; width: 66
+center: (348, 266)
+
+imageName: test.bmp
+height: 159; width: 79
+center: (388, 345)
+
+imageName: test.bmp
+height: 229; width: 115
+center: (311, 303)
+

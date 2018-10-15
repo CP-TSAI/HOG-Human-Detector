@@ -10,7 +10,7 @@
 
 
 // test perception member
-TEST(perceptionTest, testPerceptiomMember){
+TEST(perceptionTest, testPerceptionMember){
 	perception perceptionObject;
 
 	// test inputHandleObject
@@ -19,7 +19,6 @@ TEST(perceptionTest, testPerceptiomMember){
 	std::size_t pos = name.find(test);  
 	std::string substr = name.substr(pos, test.size());
 	EXPECT_EQ(test, substr);
-
 
 	// test imageProcessObject
 	name =  typeid(perceptionObject.imageProcessObject).name();
@@ -43,9 +42,23 @@ TEST(perceptionTest, testPerceptiomMember){
 	EXPECT_EQ(test, substr);
 }
 
+TEST(perceptionTest2, testPerceptionRun){
+	perception perceptionObject1;
+	perceptionObject1.outputDisplayObject.writefile.open ("../test.txt");
+	//perceptionObject1.image = perceptionObject1.inputHandleObject.readImage("../imageData/Testcase/test.bmp");
+	//cv::Mat inImg = perceptionObject1.image;
+	std::string imageName = "test.bmp";
+	perceptionObject1.run(imageName);
+	int num = cv::countNonZero(perceptionObject1.image!=perceptionObject1.imageResult);
+	EXPECT_NE(num, 0);
+	perceptionObject1.outputDisplayObject.writefile.close();
+
+}
+
 
 // test inputHandle
 TEST(inputHandleTest, testInputHandleReadImage){
+	// give existent image
 	perception perceptionObject1;
 	perceptionObject1.image = perceptionObject1.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
 	EXPECT_EQ(int(perceptionObject1.inputHandleObject.isReadSuccessful), 1);
@@ -61,20 +74,36 @@ TEST(inputHandleTest, testInputHandleReadImage){
 TEST(imageProcessTest, testImageProcessResizeImage){
 	perception perceptionObject;
 	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_082.bmp");
+
+	EXPECT_EQ(perceptionObject.image.rows, 640);
+	EXPECT_EQ(perceptionObject.image.cols, 480);
+
 	cv::Mat imageResized = perceptionObject.imageProcessObject.resizeImage(perceptionObject.image);
 	EXPECT_EQ(imageResized.rows, 480);
 	EXPECT_EQ(imageResized.cols, 640);
 }
 
+
 TEST(imageProcessTest, testImageProcessToGray){
 	perception perceptionObject;
 
 	// give a color image
-	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_082.bmp");
+	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
 	EXPECT_EQ(perceptionObject.image.channels(), 3);
 
 	cv::Mat imageGray = perceptionObject.imageProcessObject.toGray(perceptionObject.image);
 	EXPECT_EQ(imageGray.channels(), 1);
+}
+
+
+TEST(imageProcessTest, testImageProcessHistogramEqualization){
+	perception perceptionObject;
+	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
+	cv::Mat imageGray = perceptionObject.imageProcessObject.toGray(perceptionObject.image);
+	cv::Mat imageHistogramEqualized = perceptionObject.imageProcessObject.histogramEqualization(imageGray);
+
+	int num = cv::countNonZero(imageGray!=imageHistogramEqualized);
+	EXPECT_NE(num, 0);
 }
 
 
@@ -110,7 +139,7 @@ TEST(imageProcessTest, testImageProcessLowPassFilter){
 // test hogHumanDetect
 TEST(hogHumanDetectTest, testHogHumanDetectMember){
 	perception perceptionObject;
-
+	perceptionObject.hogHumanDetectObject.setHogSVM(perceptionObject.hogHumanDetectObject.hog);
 	std::string name =  typeid(perceptionObject.hogHumanDetectObject.hog).name();
 	std::string test = "HOGDescriptor";
 	std::size_t pos = name.find(test);  
@@ -121,6 +150,18 @@ TEST(hogHumanDetectTest, testHogHumanDetectMember){
 
 
 // outputDisplay
+TEST(outputDisplayTest, testOutputImage){
+	perception perceptionObject;
+	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
+	cv::Mat img_tmp = perceptionObject.outputDisplayObject.outputImage(perceptionObject.image, "test2.png");
+	int num = cv::countNonZero(img_tmp>0);
+	EXPECT_NE(num, 0);
+
+}
+
+
+
+
 TEST(outputDisplayTest, testMarkHuman){
 	perception perceptionObject;
 	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");

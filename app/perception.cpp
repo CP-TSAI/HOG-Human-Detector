@@ -30,8 +30,9 @@ void perception::run(std::string imageName){
 		imageProcessed = imageLowPass;
 	}
 
+
 	// -- setting SVM classifier
-	hogHumanDetectObject.hog = hogHumanDetectObject.setHogSVM(hogHumanDetectObject.hog);
+	hogHumanDetectObject.setHogSVM(hogHumanDetectObject.hog);
 
 	imageResult = outputDisplayObject.markHuman(imageProcessed, hogHumanDetectObject.hog, imageName);
 	outputDisplayObject.outputImage(imageResult, imageName);
