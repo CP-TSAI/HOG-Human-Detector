@@ -9,16 +9,22 @@
 #include <sstream>
 #include <dirent.h>
 
+using namespace cv;
+using std::cout;
+using std::endl;
+
 int main() {
+
 	perception perceptionObject;
+	perceptionObject.outputDisplayObject.writefile.open ("../perception.txt");
 	DIR *pDIR;
-	std::vector<std::string> files;
+	vector<string> files;
 	struct dirent *entry;
 	if( pDIR = opendir("../imageData/Data") ){
 		while(entry = readdir(pDIR)){
 			if( strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0 ){
-				std::string imageName = entry->d_name;
-				imageName = "../imageData/Data/" + imageName;
+				string imageName = entry->d_name;
+				//folderName = "../imageData/Data/";
 				perceptionObject.run(imageName);
 			}
 		}
@@ -27,6 +33,6 @@ int main() {
 	else{
 		std::cout << "CANNOT OPEN!!!" << std::endl;
 	}
+	perceptionObject.outputDisplayObject.writefile.close();
 	return 0;
 }
-

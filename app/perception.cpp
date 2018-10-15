@@ -2,14 +2,13 @@
 #include "perception.h"
 
 // ---- perception
-void perception::run(std::string imageName){
-	// -- read image ----------------------------
-	image = inputHandleObject.readImage(imageName); // color image
-	// perceptionObject.image = perceptionObject.inputHandleObject.readImage("../gray_image.jpg"); // gray image
+void perception::run(string imageName){
+	string folderName = "../imageData/Data/";
+	image = inputHandleObject.readImage(folderName + imageName); 
 
 	// check if read success
 	if(!inputHandleObject.isReadSuccessful){
-		std::cout << "ERROR!!!!!" << std::endl;
+		cout << "ERROR!!!!!" << endl;
 		return;
 	}
 
@@ -19,12 +18,6 @@ void perception::run(std::string imageName){
 	}
 
 	imageResized = imageProcessObject.resizeImage(image);
-
-	
-
-	// cout << "rows: " << resizedImage.rows << endl;
-	// cout << "cols: " << resizedImage.cols << endl;
-
 
 	if(isGray){ // do histogram equalization
 		// --- Histogram Equalization
@@ -37,39 +30,9 @@ void perception::run(std::string imageName){
 		imageProcessed = imageLowPass;
 	}
 
-	//-------------------- High Pass Filter --------------------
-	// TODO: this part not finish yet
+	// -- setting SVM classifier
+	hogHumanDetectObject.hog = hogHumanDetectObject.setHogSVM(hogHumanDetectObject.hog);
 
-	// Mat imageHighPass;
-	// imageHighPass = image - imageLowPass;
-	// imshow("imageHighPass", imageHighPass);
-
-	// Mat imageEdge;
-	// Canny(imageGray, imageEdge, 50, 150, 3);
-
-	// Mat imageDraw;
-	// imageEdge.convertTo(imageDraw, CV_8U);
-	
-	// imshow("imageEdge", imageEdge);
-	
-	// imageHighPass = image + imageEdge;
-	// imageHighPass.convertTo(imageHighPass, CV_8U);
-	// imshow("imageHighPass", imageHighPass);
-	// ----------------------------------------------------------
-
-
-	// // -- setting SVM classifier
-	hogHumanDetectObject.setHogSVM(hogHumanDetectObject.hog);
-
-
-	// // ----------------- Detect and Draw BB box -----------------
-	imageResult = outputDisplayObject.markHuman(imageProcessed, hogHumanDetectObject.hog);
-	// // ----------------------------------------------------------
-	
-
-	outputDisplayObject.printImage(imageResult);
-
-	
-	// imshow("imageResult", imageResult);
-	// waitKey(0);
+	imageResult = outputDisplayObject.markHuman(imageProcessed, hogHumanDetectObject.hog, imageName);
+	outputDisplayObject.outputImage(imageResult, imageName);
 }

@@ -1,0 +1,76 @@
+imageName: person_075.bmp
+height: 164; width: 82
+center: (295, 278)
+
+imageName: person_056.bmp
+height: 290; width: 152
+center: (367, 288)
+
+imageName: person_050.bmp
+height: 155; width: 78
+center: (309, 136)
+
+imageName: person_050.bmp
+height: 178; width: 90
+center: (106, 124)
+
+imageName: person_050.bmp
+height: 313; width: 157
+center: (399, 247)
+
+imageName: person_065.bmp
+height: 319; width: 160
+center: (302, 268)
+
+imageName: gray_image.jpg
+height: 162; width: 81
+center: (281, 247)
+
+imageName: gray_image.jpg
+height: 167; width: 83
+center: (138, 206)
+
+imageName: person_052.bmp
+height: 304; width: 152
+center: (323, 269)
+
+imageName: person_062.bmp
+height: 114; width: 30
+center: (621, 196)
+
+imageName: person_062.bmp
+height: 277; width: 138
+center: (447, 292)
+
+imageName: person_073.bmp
+height: 133; width: 66
+center: (348, 266)
+
+imageName: person_073.bmp
+height: 159; width: 79
+center: (388, 345)
+
+imageName: person_073.bmp
+height: 229; width: 115
+center: (311, 303)
+
+imageName: person_070.bmp
+height: 247; width: 124
+center: (264, 289)
+
+imageName: person_070.bmp
+height: 185; width: 123
+center: (422, 108)
+
+imageName: person_063.bmp
+height: 242; width: 122
+center: (367, 303)
+
+imageName: person_063.bmp
+height: 115; width: 29
+center: (18, 161)
+
+imageName: person_071.bmp
+height: 350; width: 175
+center: (256, 240)
+

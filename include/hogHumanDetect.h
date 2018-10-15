@@ -3,13 +3,19 @@
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+using namespace cv;
+
 
 class hogHumanDetect{
 private:
 
 public:
-	cv::HOGDescriptor hog;
-	void setHogSVM(cv::HOGDescriptor& hog);
+	HOGDescriptor hog;
+	HOGDescriptor& setHogSVM(HOGDescriptor& hog);
 };
 
 #endif    // INCLUDE_HOGHUMANDETECT_H_
