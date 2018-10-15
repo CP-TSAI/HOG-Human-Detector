@@ -6,17 +6,15 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-using namespace cv;
 
 
 class outputDisplay{
 private:
 public:
-	cv::Mat& outputImage(Mat& img, string imageName);
-	void printMessage(cv::Rect& r, string imageName);
-	Mat markHuman(Mat &img, HOGDescriptor& hog, string imageName); // unit test
-	ofstream writefile;
+	cv::Mat& outputImage(cv::Mat& img, std::string imageName);
+	void printMessage(cv::Rect& r, std::string imageName);
+	cv::Mat markHuman(cv::Mat &img, cv::HOGDescriptor& hog, std::string imageName); // unit test
+	std::ofstream writefile;
 };
 
 #endif    // INCLUDE_OUTPUTDISPLAY_H_

@@ -1,19 +1,17 @@
 
 #include "outputDisplay.h"
-#include <time.h>
 #include <iostream>
 
 
 
-cv::Mat& outputDisplay::outputImage(cv::Mat& img, string imageName){
+cv::Mat& outputDisplay::outputImage(cv::Mat& img, std::string imageName){
 	cv::imshow("img", img);
 	cv::waitKey(700);
-	srand (time(NULL));
-	string folderName = "../imageDetected/";
+	std::string folderName = "../imageDetected/";
 	cv::imwrite(folderName + imageName, img);
 	return img;
 }
-void outputDisplay::printMessage(cv::Rect& r, string imageName){
+void outputDisplay::printMessage(cv::Rect& r, std::string imageName){
 
 	auto height = r.br().y - r.tl().y;
 	auto width = r.br().x - r.tl().x;
@@ -30,7 +28,7 @@ void outputDisplay::printMessage(cv::Rect& r, string imageName){
 }
 
 
-cv::Mat outputDisplay::markHuman(cv::Mat &img, cv::HOGDescriptor& hog, string imageName) {
+cv::Mat outputDisplay::markHuman(cv::Mat &img, cv::HOGDescriptor& hog, std::string imageName) {
 	std::vector<cv::Rect> found, found_filtered;
 	hog.detectMultiScale(img, found, 0, cv::Size(8, 8), cv::Size(32, 32), 1.05, 2);
 	

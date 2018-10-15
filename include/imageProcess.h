@@ -7,18 +7,14 @@
 #include <vector>
 
 
-using namespace std;
-using namespace cv;
-
-
 class imageProcess{
 private:
 
 public: 
-	Mat resizeImage(Mat& img); // unit test
-	Mat histogramEqualization(Mat& img);
-	Mat toGray(Mat& img); // unit test
-	Mat lowPassFilter(Mat& img); // unit test
+	cv::Mat resizeImage(cv::Mat& img); // unit test
+	cv::Mat histogramEqualization(cv::Mat& img);
+	cv::Mat toGray(cv::Mat& img); // unit test
+	cv::Mat lowPassFilter(cv::Mat& img); // unit test
 };
 
 #endif    // INCLUDE_IMAGEPROCESS_H_

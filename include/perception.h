@@ -6,33 +6,29 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <iostream>
 #include <vector>
-
 #include "inputHandle.h"
 #include "imageProcess.h"
 #include "hogHumanDetect.h"
 #include "outputDisplay.h"
-
-using namespace std;
-using namespace cv;
 
 class perception{
 private:
 
 
 public:
-	void run(string imageName); // later
+	void run(std::string imageName); // later
 	void outputInfo(); // send message to other module
 	inputHandle inputHandleObject; 
 	hogHumanDetect hogHumanDetectObject;
 	imageProcess imageProcessObject;
 	outputDisplay outputDisplayObject;
-	Mat image; 
-	Mat imageResized;
-	Mat imageLowPass;
-	Mat imageGray;
-	Mat imageHistogramEqualization;
-	Mat imageProcessed; // rgb or gray
-	Mat imageResult;
+	cv::Mat image; 
+	cv::Mat imageResized;
+	cv::Mat imageLowPass;
+	cv::Mat imageGray;
+	cv::Mat imageHistogramEqualization;
+	cv::Mat imageProcessed; // rgb or gray
+	cv::Mat imageResult;
 	bool isGray = 0;
 };
 

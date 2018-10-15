@@ -6,16 +6,14 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-using namespace cv;
 
 
 class hogHumanDetect{
 private:
 
 public:
-	HOGDescriptor hog;
-	HOGDescriptor& setHogSVM(HOGDescriptor& hog);
+	cv::HOGDescriptor hog;
+	cv::HOGDescriptor& setHogSVM(cv::HOGDescriptor& hog);
 };
 
 #endif    // INCLUDE_HOGHUMANDETECT_H_

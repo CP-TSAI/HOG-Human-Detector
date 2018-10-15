@@ -2,13 +2,13 @@
 #include "perception.h"
 
 // ---- perception
-void perception::run(string imageName){
-	string folderName = "../imageData/Data/";
+void perception::run(std::string imageName){
+	std::string folderName = "../imageData/Data/";
 	image = inputHandleObject.readImage(folderName + imageName); 
 
 	// check if read success
 	if(!inputHandleObject.isReadSuccessful){
-		cout << "ERROR!!!!!" << endl;
+		std::cout << "ERROR!!!!!" << std::endl;
 		return;
 	}
 
