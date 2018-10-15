@@ -17,6 +17,6 @@ cv::Mat imageProcess::toGray(cv::Mat& img){
 }
 
 cv::Mat imageProcess::lowPassFilter(cv::Mat& img){
-	blur(img, img, Size(3, 3));
+	blur(img, img, cv::Size(3, 3));
 	return img;
 }
