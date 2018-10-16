@@ -42,18 +42,7 @@ TEST(perceptionTest, testPerceptionMember){
 	EXPECT_EQ(test, substr);
 }
 
-TEST(perceptionTest2, testPerceptionRun){
-	perception perceptionObject1;
-	perceptionObject1.outputDisplayObject.writefile.open ("../test.txt");
-	//perceptionObject1.image = perceptionObject1.inputHandleObject.readImage("../imageData/Testcase/test.bmp");
-	//cv::Mat inImg = perceptionObject1.image;
-	std::string imageName = "test.bmp";
-	perceptionObject1.run(imageName);
-	int num = cv::countNonZero(perceptionObject1.image!=perceptionObject1.imageResult);
-	EXPECT_NE(num, 0);
-	perceptionObject1.outputDisplayObject.writefile.close();
 
-}
 
 
 // test inputHandle
@@ -150,14 +139,7 @@ TEST(hogHumanDetectTest, testHogHumanDetectMember){
 
 
 // outputDisplay
-TEST(outputDisplayTest, testOutputImage){
-	perception perceptionObject;
-	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
-	cv::Mat img_tmp = perceptionObject.outputDisplayObject.outputImage(perceptionObject.image, "test2.png");
-	int num = cv::countNonZero(img_tmp>0);
-	EXPECT_NE(num, 0);
 
-}
 
 
 
@@ -185,4 +167,28 @@ TEST(outputDisplayTest, testMarkHuman){
 }
 
 
+TEST(outputDisplayTest, testOutputImage){
+	perception perceptionObject;
+	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
+	cv::Mat outImg = perceptionObject.outputDisplayObject.outputImage(perceptionObject.image, "test2.png");
+	cv::Mat grayImg = perceptionObject.imageProcessObject.toGray(outImg);
+	int num = cv::countNonZero(grayImg>0);
+	EXPECT_NE(num, 0);
+
+}
+
+TEST(perceptionTest2, testPerceptionRun){
+	perception perceptionObject1;
+	perceptionObject1.outputDisplayObject.writefile.open ("../test.txt");
+	//perceptionObject1.image = perceptionObject1.inputHandleObject.readImage("../imageData/Testcase/test.bmp");
+	//cv::Mat inImg = perceptionObject1.image;
+	std::string imageName = "test.bmp";
+	perceptionObject1.run(imageName);
+	cv::Mat dif = perceptionObject1.image-perceptionObject1.imageResult;
+	cv::Mat grayDif = perceptionObject1.imageProcessObject.toGray(dif);
+	int num = cv::countNonZero(grayDif);
+	EXPECT_NE(num, 0);
+	perceptionObject1.outputDisplayObject.writefile.close();
+
+}
 

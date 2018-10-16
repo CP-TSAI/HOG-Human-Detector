@@ -5,8 +5,8 @@
 
 
 cv::Mat& outputDisplay::outputImage(cv::Mat& img, std::string imageName){
-	cv::imshow("img", img);
-	cv::waitKey(700);
+	//cv::imshow("img", img);
+	//cv::waitKey(700);
 	std::string folderName = "../imageDetected/";
 	cv::imwrite(folderName + imageName, img);
 	return img;
