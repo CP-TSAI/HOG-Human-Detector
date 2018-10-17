@@ -15,21 +15,12 @@
 
 
 
-<<<<<<< HEAD
 cv::Mat& outputDisplay::outputImage(cv::Mat& img, std::string imageName) {
     // cv::imshow("img", img);
     // cv::waitKey(700);
     std::string folderName = "../imageDetected/";
     cv::imwrite(folderName + imageName, img);
     return img;
-=======
-cv::Mat& outputDisplay::outputImage(cv::Mat& img, std::string imageName){
-	//cv::imshow("img", img);
-	//cv::waitKey(700);
-	std::string folderName = "../imageDetected/";
-	cv::imwrite(folderName + imageName, img);
-	return img;
->>>>>>> 28d8ea642d1c4c92fa898afa1f7b63b709fba0e5
 }
 void outputDisplay::printMessage(const cv::Rect& r, std::string imageName) {
     auto height = r.br().y - r.tl().y;

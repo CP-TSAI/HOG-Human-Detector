@@ -1,8 +1,8 @@
-/** @file TODO
- *  @brief TODO
+/** @file perception.h
+ *  @brief Pipeline controller for human detection
  *  @copyright (c) 2018 Chien-Te Lee, Chin-Po Tsai
  *
- *  TODO
+ *  This file contains definitions of class for perception
  *  
  *  
  *  @author Chien-Te Lee, Chin-Po Tsai
@@ -12,7 +12,6 @@
 
 #ifndef INCLUDE_PERCEPTION_H_
 #define INCLUDE_PERCEPTION_H_
-
 
 
 #include <iostream>
@@ -25,6 +24,9 @@
 #include "hogHumanDetect.h"
 #include "outputDisplay.h"
 
+/**
+ *  @brief Class that does process controll
+*/
 class perception{
  private:
  public:
