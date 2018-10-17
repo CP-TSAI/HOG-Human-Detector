@@ -1,17 +1,21 @@
 /** @file imageProcess.cpp
  *  @brief Implementation of class imageProcess methods
  *  @copyright (c) 2018 Chien-Te Lee, Chin-Po Tsai
- *
- *  This file implements class imageProcess methods and functions.
- *  
- *  
  *  @author Chien-Te Lee, Chin-Po Tsai
  *  @date   10/16/2018
+ *
+ *  This file implements class imageProcess methods and functions.
  *  
 */
 
 
 #include "imageProcess.h"
+
+/**
+*   @brief This function resize the image
+*   @param outImg stores the resized image
+*   @return outImg is the resized image 
+*/
 
 cv::Mat imageProcess::resizeImage(const cv::Mat& img) {
     cv::Mat outImg;
@@ -19,18 +23,33 @@ cv::Mat imageProcess::resizeImage(const cv::Mat& img) {
     return outImg;
 }
 
+/**
+*   @brief This function does histogram equalizaiton to the image
+*   @param outImg stores the histogram equalized image
+*   @return outImg is the histogram equalized image 
+*/
 cv::Mat imageProcess::histogramEqualization(const cv::Mat& img) {
     cv::Mat outImg;
     equalizeHist(img, outImg);
     return outImg;
 }
 
+/**
+*   @brief This function greyscales the image
+*   @param outImg stores the greyscaled image
+*   @return outImg is the greyscaled image 
+*/
 cv::Mat imageProcess::toGray(const cv::Mat& img) {
     cv::Mat outImg;
     cvtColor(img, outImg, CV_RGB2GRAY);
     return outImg;
 }
 
+/**
+*   @brief This function do lowPassFiltering to the image
+*   @param outImg stores the lowPassFiltered image
+*   @return outImg is the lowPassFiltered image 
+*/
 cv::Mat imageProcess::lowPassFilter(const cv::Mat& img) {
     cv::Mat outImg;
     blur(img, outImg, cv::Size(3, 3));
