@@ -1,0 +1,27 @@
+cptsai@cptsai-P15FR5 ~/catkin_ws/src/ENPM808X/midterm/ENPM808X-Midterm-Project/app (master) $ cpplint hogHumanDetect.cpp imageProcess.cpp inputHandle.cpp main.cpp outputDisplay.cpp perception.cpp 
+Done processing hogHumanDetect.cpp
+Done processing imageProcess.cpp
+Done processing inputHandle.cpp
+main.cpp:16:  Include the directory when naming .h files  [build/include_subdir] [4]
+main.cpp:21:  Found C system header after other header. Should be: main.h, c system, c++ system, other.  [build/include_order] [4]
+Done processing main.cpp
+outputDisplay.cpp:95:  Consider using rand_r(...) instead of rand(...) for improved thread safety.  [runtime/threadsafe_fn] [2]
+Done processing outputDisplay.cpp
+perception.cpp:12:  Include the directory when naming .h files  [build/include_subdir] [4]
+perception.cpp:31:  Using deprecated casting style.  Use static_cast<int>(...) instead  [readability/casting] [4]
+Done processing perception.cpp
+Total errors found: 5
+
+
+cptsai@cptsai-P15FR5 ~/catkin_ws/src/ENPM808X/midterm/ENPM808X-Midterm-Project/include (master) $ cpplint hogHumanDetect.h imageProcess.h inputHandle.h outputDisplay.h perception.h 
+hogHumanDetect.h:30:  Is this a non-const reference? If so, make const or use a pointer: cv::HOGDescriptor& hog  [runtime/references] [2]
+Done processing hogHumanDetect.h
+Done processing imageProcess.h
+Done processing inputHandle.h
+outputDisplay.h:36:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& img  [runtime/references] [2]
+outputDisplay.h:55:  Is this a non-const reference? If so, make const or use a pointer: cv::HOGDescriptor& hog  [runtime/references] [2]
+Done processing outputDisplay.h
+Done processing perception.h
+Total errors found: 3
+
+

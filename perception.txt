@@ -23,12 +23,12 @@ height: 319; width: 160
 center: (302, 268)
 
 imageName: gray_image.jpg
-height: 162; width: 81
-center: (281, 247)
-
-imageName: gray_image.jpg
 height: 167; width: 83
 center: (138, 206)
+
+imageName: gray_image.jpg
+height: 162; width: 81
+center: (281, 247)
 
 imageName: person_052.bmp
 height: 304; width: 152
@@ -67,12 +67,12 @@ height: 133; width: 66
 center: (348, 266)
 
 imageName: person_073.bmp
-height: 159; width: 79
-center: (388, 345)
-
-imageName: person_073.bmp
 height: 229; width: 115
 center: (311, 303)
+
+imageName: person_073.bmp
+height: 159; width: 79
+center: (388, 345)
 
 imageName: person_070.bmp
 height: 247; width: 124
