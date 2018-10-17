@@ -56,7 +56,7 @@ IN THE SOFTWARE.
 - create build folder
 - build program
 ```
-git clone --recursive https://github.com/CP-TSAT/ENPM808X-Midterm-Project
+git clone --recursive https://github.com/CP-TSAI/ENPM808X-Midterm-Project.git
 cd <repository>
 mkdir build
 cd build
