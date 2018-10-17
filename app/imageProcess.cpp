@@ -13,7 +13,7 @@
 
 /**
 *   @brief This function resize the image
-*   @param outImg stores the resized image
+*   @param img is the input image
 *   @return outImg is the resized image 
 */
 
@@ -25,7 +25,7 @@ cv::Mat imageProcess::resizeImage(const cv::Mat& img) {
 
 /**
 *   @brief This function does histogram equalizaiton to the image
-*   @param outImg stores the histogram equalized image
+*   @param img is the input image
 *   @return outImg is the histogram equalized image 
 */
 cv::Mat imageProcess::histogramEqualization(const cv::Mat& img) {
@@ -36,7 +36,7 @@ cv::Mat imageProcess::histogramEqualization(const cv::Mat& img) {
 
 /**
 *   @brief This function greyscales the image
-*   @param outImg stores the greyscaled image
+*   @param img is the input image
 *   @return outImg is the greyscaled image 
 */
 cv::Mat imageProcess::toGray(const cv::Mat& img) {
@@ -47,7 +47,7 @@ cv::Mat imageProcess::toGray(const cv::Mat& img) {
 
 /**
 *   @brief This function do lowPassFiltering to the image
-*   @param outImg stores the lowPassFiltered image
+*   @param img is the input image
 *   @return outImg is the lowPassFiltered image 
 */
 cv::Mat imageProcess::lowPassFilter(const cv::Mat& img) {
