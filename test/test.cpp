@@ -95,7 +95,7 @@ TEST(hogHumanDetectTest, testHogHumanDetectMember){
 	perception perceptionObject;
 	perceptionObject.hogHumanDetectObject.setHogSVM(perceptionObject.hogHumanDetectObject.hog);
 
-	EXPECT_EQ(perceptionObject.hogHumanDetectObject.hog, cv::Size(16,16));
+	EXPECT_EQ(perceptionObject.hogHumanDetectObject.hog.blockSize, cv::Size(16,16));
 }
 
 
@@ -131,12 +131,12 @@ TEST(outputDisplayTest, testOutputImage){
 }
 
 // test perception
-TEST(perceptionTest2, testPerceptionRun){
+TEST(perceptionTest, testPerceptionRun){
 	perception perceptionObject1;
 	perceptionObject1.outputDisplayObject.writefile.open ("../test.txt");
 	std::string imageName = "test.bmp";
 	perceptionObject1.run(imageName);
-	EXPECT_NE(perceptionObject1.imageResult.empty(), 0);
+	EXPECT_NE(perceptionObject1.imageResult.empty(), 1);
 	perceptionObject1.outputDisplayObject.writefile.close();
 
 }
