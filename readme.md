@@ -20,6 +20,11 @@ After the processing input image with the above HOG detection algorithm, the pro
 - Verify unit testing
 - Create comments using Doxygen style
 
+## Output Result
+
+![OutputImage1](https://raw.githubusercontent.com/CP-TSAI/ENPM808X-Midterm-Project/master/imageDetected/person_062.bmp)
+
+
 ## Licence
 - Mit Licence
 ```
@@ -40,6 +45,12 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 IN THE SOFTWARE.
 ```
 
+
+## Dependencies
+- Ubuntu 16.04
+- OpenCV 3.3
+- CMake
+
 ## Standard install via command-line
 - clone from repository
 - create build folder
@@ -55,8 +66,24 @@ Run tests: ./test/cpp-test
 Run program: ./app/shell-app
 ```
 
+## Run Demo Example
+- in <repository>/build directory
+```
+./app/shell-app
+```
+
+## Run Unit Tests
+- in <repository>/build directory
+```
+./test/cpp-test
+```
+
+
 ## Pair Programming and SIP Process
 The product backlog, iteration backlog, and worklog googlesheet is at: [Product Backlog](https://docs.google.com/spreadsheets/d/1iUGy3wYF-gTKpujZMg4uWaInznVW3jiqRCExSMgYiPU/edit?usp=sharing)
+
+
+
 
 
 
