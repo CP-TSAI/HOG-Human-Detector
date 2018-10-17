@@ -131,13 +131,29 @@ TEST(outputDisplayTest, testOutputImage){
 }
 
 // test perception
-TEST(perceptionTest, testPerceptionRun){
+TEST(perceptionTest, testPerceptionRunColor){
 	perception perceptionObject1;
 	perceptionObject1.outputDisplayObject.writefile.open ("../test.txt");
-	std::string imageName = "test.bmp";
+	std::string imageName = "test1.bmp";
 	perceptionObject1.run(imageName);
 	EXPECT_NE(perceptionObject1.imageResult.empty(), 1);
 	perceptionObject1.outputDisplayObject.writefile.close();
+
+
+	perception perceptionObject2;
+	perceptionObject2.outputDisplayObject.writefile.open ("../test.txt");
+	imageName = "test2.jpg";
+	perceptionObject2.run(imageName);
+	EXPECT_NE(perceptionObject2.imageResult.empty(), 1);
+	perceptionObject2.outputDisplayObject.writefile.close();
+
+
+	perception perceptionObject3;
+	perceptionObject3.outputDisplayObject.writefile.open ("../test.txt");
+	imageName = "test3.jpg";
+	perceptionObject3.run(imageName);
+	EXPECT_EQ(perceptionObject3.imageResult.empty(), 1);
+	perceptionObject3.outputDisplayObject.writefile.close();
 
 }
 
