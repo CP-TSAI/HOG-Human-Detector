@@ -9,53 +9,6 @@
 #include "outputDisplay.h"
 
 
-// test perception member
-TEST(perceptionTest, testPerceptionMember){
-	perception perceptionObject;
-
-	// test inputHandleObject
-	std::string name =  typeid(perceptionObject.inputHandleObject).name();
-	std::string test = "inputHandle";
-	std::size_t pos = name.find(test);  
-	std::string substr = name.substr(pos, test.size());
-	EXPECT_EQ(test, substr);
-
-	// test imageProcessObject
-	name =  typeid(perceptionObject.imageProcessObject).name();
-	test = "imageProcess";
-	pos = name.find(test);  
-	substr = name.substr(pos, test.size());
-	EXPECT_EQ(test, substr);
-
-	// test hogHumanDetectObject
-	name =  typeid(perceptionObject.hogHumanDetectObject).name();
-	test = "hogHumanDetect";
-	pos = name.find(test);  
-	substr = name.substr(pos, test.size());
-	EXPECT_EQ(test, substr);
-
-	// test outputDisplayObject
-	name =  typeid(perceptionObject.outputDisplayObject).name();
-	test = "outputDisplay";
-	pos = name.find(test);  
-	substr = name.substr(pos, test.size());
-	EXPECT_EQ(test, substr);
-}
-
-TEST(perceptionTest2, testPerceptionRun){
-	perception perceptionObject1;
-	perceptionObject1.outputDisplayObject.writefile.open ("../test.txt");
-	//perceptionObject1.image = perceptionObject1.inputHandleObject.readImage("../imageData/Testcase/test.bmp");
-	//cv::Mat inImg = perceptionObject1.image;
-	std::string imageName = "test.bmp";
-	perceptionObject1.run(imageName);
-	int num = cv::countNonZero(perceptionObject1.image!=perceptionObject1.imageResult);
-	EXPECT_NE(num, 0);
-	perceptionObject1.outputDisplayObject.writefile.close();
-
-}
-
-
 // test inputHandle
 TEST(inputHandleTest, testInputHandleReadImage){
 	// give existent image
@@ -101,6 +54,7 @@ TEST(imageProcessTest, testImageProcessHistogramEqualization){
 	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
 	cv::Mat imageGray = perceptionObject.imageProcessObject.toGray(perceptionObject.image);
 	cv::Mat imageHistogramEqualized = perceptionObject.imageProcessObject.histogramEqualization(imageGray);
+	EXPECT_EQ(imageHistogramEqualized.channels(), 1);
 
 	int num = cv::countNonZero(imageGray!=imageHistogramEqualized);
 	EXPECT_NE(num, 0);
@@ -140,28 +94,12 @@ TEST(imageProcessTest, testImageProcessLowPassFilter){
 TEST(hogHumanDetectTest, testHogHumanDetectMember){
 	perception perceptionObject;
 	perceptionObject.hogHumanDetectObject.setHogSVM(perceptionObject.hogHumanDetectObject.hog);
-	std::string name =  typeid(perceptionObject.hogHumanDetectObject.hog).name();
-	std::string test = "HOGDescriptor";
-	std::size_t pos = name.find(test);  
-	std::string substr = name.substr(pos, test.size());
 
-	EXPECT_EQ(test, substr);
+	EXPECT_EQ(perceptionObject.hogHumanDetectObject.hog.blockSize, cv::Size(16,16));
 }
 
 
-// outputDisplay
-TEST(outputDisplayTest, testOutputImage){
-	perception perceptionObject;
-	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
-	cv::Mat img_tmp = perceptionObject.outputDisplayObject.outputImage(perceptionObject.image, "test2.png");
-	int num = cv::countNonZero(img_tmp>0);
-	EXPECT_NE(num, 0);
-
-}
-
-
-
-
+// test outputDisplay
 TEST(outputDisplayTest, testMarkHuman){
 	perception perceptionObject;
 	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
@@ -185,4 +123,21 @@ TEST(outputDisplayTest, testMarkHuman){
 }
 
 
+TEST(outputDisplayTest, testOutputImage){
+	perception perceptionObject;
+	perceptionObject.image = perceptionObject.inputHandleObject.readImage("../imageData/Testcase/person_062.bmp");
+	cv::Mat outImg = perceptionObject.outputDisplayObject.outputImage(perceptionObject.image, "test2.png");
+	EXPECT_NE(outImg.empty(), 1);
+}
+
+// test perception
+TEST(perceptionTest, testPerceptionRun){
+	perception perceptionObject1;
+	perceptionObject1.outputDisplayObject.writefile.open ("../test.txt");
+	std::string imageName = "test.bmp";
+	perceptionObject1.run(imageName);
+	EXPECT_NE(perceptionObject1.imageResult.empty(), 1);
+	perceptionObject1.outputDisplayObject.writefile.close();
+
+}
 
