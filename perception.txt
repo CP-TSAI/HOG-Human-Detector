@@ -63,12 +63,24 @@ height: 185; width: 123
 center: (422, 108)
 
 imageName: person_063.bmp
+height: 242; width: 122
+center: (367, 303)
+
+imageName: person_063.bmp
 height: 115; width: 29
 center: (18, 161)
 
-imageName: person_063.bmp
-height: 242; width: 122
-center: (367, 303)
+imageName: test.bmp
+height: 133; width: 66
+center: (348, 266)
+
+imageName: test.bmp
+height: 159; width: 79
+center: (388, 345)
+
+imageName: test.bmp
+height: 229; width: 115
+center: (311, 303)
 
 imageName: person_071.bmp
 height: 350; width: 175

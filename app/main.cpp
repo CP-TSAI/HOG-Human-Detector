@@ -1,3 +1,17 @@
+/** @file TODO
+ *  @brief TODO
+ *  @copyright (c) 2018 Chien-Te Lee, Chin-Po Tsai
+ *
+ *  TODO
+ *  
+ *  
+ *  @author Chien-Te Lee, Chin-Po Tsai
+ *  @date   10/16/2018
+ *  
+*/
+
+
+
 #include <iostream>
 #include <vector>
 #include "perception.h"
@@ -8,10 +22,15 @@
 #include <fstream>
 #include <sstream>
 #include <dirent.h>
+#include <opencv2/core/ocl.hpp> 
 
 int main() {
-	perception perceptionObject;
-	perceptionObject.outputDisplayObject.writefile.open ("../perception.txt");
+
+	cv::ocl::setUseOpenCL(false);
+
+	perception* perceptionObject = new perception();
+
+	perceptionObject->outputDisplayObject.writefile.open ("../perception.txt");
 	DIR *pDIR;
 	std::vector<std::string> files;
 	struct dirent *entry;
@@ -19,15 +38,17 @@ int main() {
 		while((entry = readdir(pDIR))){
 			if( strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0 ){
 				std::string imageName = entry->d_name;
-				//folderName = "../imageData/Data/";
-				perceptionObject.run(imageName);
+				perceptionObject->run(imageName);
 			}
 		}
 		closedir(pDIR);
+		delete entry;
 	}
 	else{
 		std::cout << "CANNOT OPEN!!!" << std::endl;
 	}
-	perceptionObject.outputDisplayObject.writefile.close();
+	perceptionObject->outputDisplayObject.writefile.close();
+
+	delete perceptionObject;
 	return 0;
 }
