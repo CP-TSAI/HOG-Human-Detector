@@ -1,20 +1,27 @@
-/** @file TODO
- *  @brief TODO
- *  @copyright (c) 2018 Chien-Te Lee, Chin-Po Tsai
- *
- *  TODO
- *  
- *  
+/** @file outputDisplay.cpp
+ *  @brief Implementation of output display methods
+ *  @copyright (c) 2018 Chien-Te Lee, Chin-Po Tsai 
  *  @author Chien-Te Lee, Chin-Po Tsai
  *  @date   10/16/2018
- *  
+ *
+ *
+ *  This file imputs output display methods, including storing output
+ *  images, writing messages to texts, and drawing the bounding box
+ *  for human.
+ *
+ * 
 */
 
 #include "outputDisplay.h"
 #include <iostream>
 
 
-
+/**
+*   @brief This function stores image to detected folder 
+*   @param img is the image need to be stored
+*   @param imageName is the name of stored image
+*   @return img returns stored image 
+*/
 cv::Mat& outputDisplay::outputImage(cv::Mat& img, std::string imageName) {
     // cv::imshow("img", img);
     // cv::waitKey(700);
@@ -22,6 +29,13 @@ cv::Mat& outputDisplay::outputImage(cv::Mat& img, std::string imageName) {
     cv::imwrite(folderName + imageName, img);
     return img;
 }
+
+/**
+*   @brief This function prints bounding box message into textfile
+*   @param Rect is the bounding box information
+*   @param imageName is the name of input image
+*   @return none 
+*/
 void outputDisplay::printMessage(const cv::Rect& r, std::string imageName) {
     auto height = r.br().y - r.tl().y;
     auto width = r.br().x - r.tl().x;
@@ -44,7 +58,13 @@ void outputDisplay::printMessage(const cv::Rect& r, std::string imageName) {
     delete center;
 }
 
-
+/**
+*   @brief This function draws bounding box of detected humans
+*   @param img is the input image
+*   @param hog is the SVM HOGDescriptor
+*   @param imageName is the name of input image
+*   @return img is the image with bounding box 
+*/
 cv::Mat outputDisplay::markHuman(cv::Mat &img, \
     cv::HOGDescriptor& hog, std::string imageName) {
 

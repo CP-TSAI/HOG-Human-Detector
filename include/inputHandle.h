@@ -1,8 +1,8 @@
-/** @file TODO
- *  @brief TODO
+/** @file inputHandle.h
+ *  @brief Check read image status
  *  @copyright (c) 2018 Chien-Te Lee, Chin-Po Tsai
  *
- *  TODO
+ *  Check the status for reading image
  *  
  *  
  *  @author Chien-Te Lee, Chin-Po Tsai
@@ -20,14 +20,16 @@
 #include <opencv2/highgui/highgui.hpp>
 
 
-
+/**
+ *  @brief Check the status
+*/
 class inputHandle{
  private:
-    cv::Mat image; /* the input image */
+    cv::Mat image;  ///< input image
     std::string errorMessage = "Could not open or find the image";
  public:
-    bool isReadSuccessful = 0;
-    cv::Mat readImage(std::string imgName);
+    bool isReadSuccessful = 0;  ///< read result
+    cv::Mat readImage(std::string imgName);  ///< function for read image
 };
 
 #endif    // INCLUDE_INPUTHANDLE_H_

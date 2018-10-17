@@ -30,12 +30,14 @@
 class perception{
  private:
  public:
-    void run(std::string imageName);
-    void outputInfo();
-    inputHandle inputHandleObject;
-    hogHumanDetect hogHumanDetectObject;
-    imageProcess imageProcessObject;
-    outputDisplay outputDisplayObject;
+    void run(std::string imageName);  ///< execute the process
+    void outputInfo();  ///< print the relative message
+    inputHandle inputHandleObject;  ///< object for inputHandle
+    hogHumanDetect hogHumanDetectObject;  ///< object for hogHumanDetect
+    imageProcess imageProcessObject;  ///< object for imageProcess
+    outputDisplay outputDisplayObject;  ///< object for outputDisplay
+
+    ///< object for images with different state
     cv::Mat image;
     cv::Mat imageResized;
     cv::Mat imageLowPass;
@@ -43,7 +45,8 @@ class perception{
     cv::Mat imageHistogramEqualization;
     cv::Mat imageProcessed;
     cv::Mat imageResult;
-    bool isGray = 0;
+
+    bool isGray = 0;  ///< check if the image is gray
 };
 
 #endif    // INCLUDE_PERCEPTION_H_

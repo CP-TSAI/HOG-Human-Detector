@@ -5,6 +5,8 @@
  *  @date   10/16/2018
  *
  *  This file implements class imageProcess methods and functions.
+ *  It contains algorithms of resizing, histogram equalization, 
+ *  grayscaling, and low-pass filtering.
  *  
 */
 
@@ -13,7 +15,7 @@
 
 /**
 *   @brief This function resize the image
-*   @param img is the input image
+*   @param img is the input image to be resized
 *   @return outImg is the resized image 
 */
 
@@ -25,7 +27,7 @@ cv::Mat imageProcess::resizeImage(const cv::Mat& img) {
 
 /**
 *   @brief This function does histogram equalizaiton to the image
-*   @param img is the input image
+*   @param img is the input image to be histogram equalized
 *   @return outImg is the histogram equalized image 
 */
 cv::Mat imageProcess::histogramEqualization(const cv::Mat& img) {
@@ -36,7 +38,7 @@ cv::Mat imageProcess::histogramEqualization(const cv::Mat& img) {
 
 /**
 *   @brief This function greyscales the image
-*   @param img is the input image
+*   @param img is the input image to be greyscaled
 *   @return outImg is the greyscaled image 
 */
 cv::Mat imageProcess::toGray(const cv::Mat& img) {
@@ -47,8 +49,8 @@ cv::Mat imageProcess::toGray(const cv::Mat& img) {
 
 /**
 *   @brief This function do lowPassFiltering to the image
-*   @param img is the input image
-*   @return outImg is the lowPassFiltered image 
+*   @param img is the input image to be blurred
+*   @return outImg is the low-pass filtered image 
 */
 cv::Mat imageProcess::lowPassFilter(const cv::Mat& img) {
     cv::Mat outImg;

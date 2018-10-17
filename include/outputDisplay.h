@@ -13,25 +13,27 @@
 #ifndef INCLUDE_OUTPUTDISPLAY_H_
 #define INCLUDE_OUTPUTDISPLAY_H_
 
-#include <opencv2/opencv.hpp>
-#include <opencv2/highgui/highgui.hpp>
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <string>
+#include <opencv2/opencv.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
 
 
 /**
  *  @brief Class that shows the detection result.
 */
 class outputDisplay{
-public:
+ public:
 	/**
       *   @brief  save image to result files
       *
       *   @param  image & file name
       *   @return the detected image
      */
-	cv::Mat& outputImage(cv::Mat& img, std::string imageName);
+  cv::Mat& outputImage(cv::Mat& img, std::string imageName);
 
 
 	/**
@@ -40,7 +42,7 @@ public:
       *   @param  result vector & image name
       *   @return none
      */
-	void printMessage(const cv::Rect& r, std::string imageName);
+  void printMessage(const cv::Rect& r, std::string imageName);
 
 
 	/**
@@ -49,10 +51,12 @@ public:
       *   @param  image file, hog detector, image name
       *   @return the image with bounding box
      */
-	cv::Mat markHuman(cv::Mat &img, cv::HOGDescriptor& hog, std::string imageName);
+  cv::Mat markHuman(cv::Mat &img, \
+    cv::HOGDescriptor& hog, std::string imageName);
 
-	std::ofstream writefile; 						///< txt writer
-private:
+  std::ofstream writefile;    ///< txt writer
+
+ private:
 };
 
 #endif    // INCLUDE_OUTPUTDISPLAY_H_

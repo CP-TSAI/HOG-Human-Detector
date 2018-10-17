@@ -1,8 +1,8 @@
-/** @file TODO
- *  @brief TODO
+/** @file hogHumanDetect.h
+ *  @brief Setup the detector parameter
  *  @copyright (c) 2018 Chien-Te Lee, Chin-Po Tsai
  *
- *  TODO
+ *  setup SVM parameter and declare detector
  *  
  *  
  *  @author Chien-Te Lee, Chin-Po Tsai
@@ -20,12 +20,14 @@
 
 
 
-
+/**
+ *  @brief Setup things for detector
+*/
 class hogHumanDetect{
  private:
  public:
-    cv::HOGDescriptor hog;
-    void setHogSVM(cv::HOGDescriptor& hog);
+    cv::HOGDescriptor hog;  ///< the hog detector
+    void setHogSVM(cv::HOGDescriptor& hog);  ///< set up the parameter
 };
 
 #endif    // INCLUDE_HOGHUMANDETECT_H_

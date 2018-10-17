@@ -34,6 +34,26 @@ imageName: person_052.bmp
 height: 304; width: 152
 center: (323, 269)
 
+imageName: test2.jpg
+height: 162; width: 81
+center: (281, 247)
+
+imageName: test2.jpg
+height: 167; width: 83
+center: (138, 206)
+
+imageName: test1.bmp
+height: 133; width: 66
+center: (348, 266)
+
+imageName: test1.bmp
+height: 159; width: 79
+center: (388, 345)
+
+imageName: test1.bmp
+height: 229; width: 115
+center: (311, 303)
+
 imageName: person_062.bmp
 height: 114; width: 30
 center: (621, 196)
@@ -69,18 +89,6 @@ center: (367, 303)
 imageName: person_063.bmp
 height: 115; width: 29
 center: (18, 161)
-
-imageName: test.bmp
-height: 133; width: 66
-center: (348, 266)
-
-imageName: test.bmp
-height: 159; width: 79
-center: (388, 345)
-
-imageName: test.bmp
-height: 229; width: 115
-center: (311, 303)
 
 imageName: person_071.bmp
 height: 350; width: 175

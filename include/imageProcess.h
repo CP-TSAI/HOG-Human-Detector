@@ -1,8 +1,8 @@
-/** @file TODO
- *  @brief TODO
+/** @file imageProcess.h
+ *  @brief tools for image process
  *  @copyright (c) 2018 Chien-Te Lee, Chin-Po Tsai
  *
- *  TODO
+ *  Set up every tool for basic image process
  *  
  *  
  *  @author Chien-Te Lee, Chin-Po Tsai
@@ -20,13 +20,18 @@
 #include <opencv2/highgui/highgui.hpp>
 
 
+/**
+ *  @brief tools for image processing
+*/
 class imageProcess{
  private:
  public:
-    // ~imageProcess();
-    cv::Mat resizeImage(const cv::Mat& img);
+    cv::Mat resizeImage(const cv::Mat& img);  ///< change the image to 640*480
+    ///< hostogram equalization tool
     cv::Mat histogramEqualization(const cv::Mat& img);
+    ///< change image to gray scale
     cv::Mat toGray(const cv::Mat& img);
+    ///< low pass filter for denoising
     cv::Mat lowPassFilter(const cv::Mat& img);
 };
 

@@ -1,5 +1,5 @@
 /** @file hogHumanDetect.cpp
- *  @brief This file set the parmeters for SVM detector
+ *  @brief Implement method to set the parmeters for SVM detector
  *  @copyright (c) 2018 Chien-Te Lee, Chin-Po Tsai
  *  @author Chien-Te Lee, Chin-Po Tsai
  *  @date   10/16/2018
@@ -14,8 +14,8 @@
 /**
 *   @brief This function sets the parmeters for SVM detector
 *   @param hog is the input HOGDescriptor
-*   @return outImg is the resized image 
+*   @return none 
 */
-void hogHumanDetect::setHogSVM(cv::HOGDescriptor& hog){
-	hog.setSVMDetector(cv::HOGDescriptor::getDefaultPeopleDetector());
+void hogHumanDetect::setHogSVM(cv::HOGDescriptor& hog) {
+    hog.setSVMDetector(cv::HOGDescriptor::getDefaultPeopleDetector());
 }
